@@ -1,3 +1,8 @@
+//Integrantes
+//Alex Ferman
+//Matheus Coto
+//Jamille Andrade
+// Felipe Will
 var five = require("johnny-five"),
   board, photoresistor;
 const firebase = require("firebase");
@@ -12,11 +17,9 @@ board.on("ready", function() {
     tempo =tempo-1;
     setTimeout('start();',1000);
     tempo.console.log()
-  }
+  } 
   
-
-  
-  //led
+  //leds
   var G = new five.Led(13)
   var R= new five.Led(12)
   var G2= new five.Led(10)
@@ -26,7 +29,7 @@ board.on("ready", function() {
   var G4= new five.Led(6)
   var Y4 = new five.Led(7)
   var R4= new five.Led(5)
-  // Create a new `photoresistor` hardware instance.
+  // Criando as instancias dos sensores photoresistor.
   vaga1 = new five.Sensor({
     pin: "A0",
     freq: 250
@@ -43,7 +46,7 @@ board.on("ready", function() {
     pin: "A3",
     freq: 250
   });
- 
+ //Firebase iniciando as config.
   const firebaseConfig = {
     apiKey: "AIzaSyBUJj7zSJW1d2r93EosrWI-dqkI5U4aa4M",
     authDomain: "dbestacione.firebaseapp.com",
@@ -54,6 +57,8 @@ board.on("ready", function() {
   };
 
   firebase.initializeApp(firebaseConfig);
+
+//logica porca refatorar na v1.1
   vaga1.on("data", function() {
 
     if(this.value> 1000 ){
