@@ -1,0 +1,84 @@
+import React ,{Component}from 'react';
+import on from '../src/images/on.png';
+import off from '../src/images/off.png';
+import * as firebase from 'firebase';
+
+import './App.css';
+
+
+class App extends Component{
+  
+constructor(){
+ 
+  super();
+  this.state={
+    v1: ''
+    
+   
+  } ; 
+}
+
+renderVAGA1(){
+  if(this.state.v1=='on'){
+  return(
+<img src={on}  alt=''></img>
+  )
+
+  }else{
+    return(
+      <img src={off}  alt=''></img>
+        )
+  }
+
+}
+componentDidMount(){
+
+  const Config = {
+    apiKey: "AIzaSyBUJj7zSJW1d2r93EosrWI-dqkI5U4aa4M",
+    authDomain: "dbestacione.firebaseapp.com",
+    databaseURL: "https://dbestacione.firebaseio.com",
+    projectId: "dbestacione",
+    storageBucket: "dbestacione.appspot.com",
+   
+  };
+
+  firebase.initializeApp(Config);
+  const rootRef = firebase.database().ref().child('VAGA1');
+  const vaga1Ref= rootRef.child('VAGA1');
+  vaga1Ref.on('value', snap =>{
+  this.setState({
+    v1: snap.val()
+    
+  });
+ 
+  });
+  
+  } 
+
+render(){
+
+  return (
+    
+    <div className="App">
+
+      <div className="title">
+      <h2><strong>VAGAS DISPONIVEIS</strong></h2>
+      </div>
+      <header className="App-header">
+        
+   <label>A1</label>     
+{this.renderVAGA1()}
+<label>A2</label>     
+  <img src={on} alt=''></img>
+<label>A1</label>     
+<img src={on} alt=''></img>
+<label>A2</label>     
+<img src={on} alt=''></img>
+{this.state.v1}
+      
+      </header>
+    </div>
+  );
+}
+}  
+  export default App;

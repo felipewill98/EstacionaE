@@ -1,0 +1,31 @@
+.vagas{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+    background-color: #333;
+    color: #fff;
+    margin: 15px;
+}
+
+.vagas img{
+  margin: 15px;
+  width: 150px;
+  height: 200px;
+}
+.qr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+   background-color: #333;
+   flex-direction: row;
+   color: white;
+}
+.qr img{
+  margin: 15px;
+  flex-direction: row;
+  width: 200px;
+  height: 200px;
+}
